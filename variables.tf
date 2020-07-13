@@ -62,6 +62,12 @@ variable "monitoring_period" {
 #   default     = "30"
 # }
 
+variable "container_name" {
+  type        = string
+  description = "Name of the container we want the load balancer to default to pointing at"
+  default     = "reverse_proxy"
+}
+
 variable "app_domain" {
   type        = string
   description = "The domain at which the application will be registered"
@@ -187,9 +193,9 @@ variable "task_scale_out_cpu_threshold_percent" {
 }
 
 variable "task_scale_in_memory_threshold_percent" {
-  type = number
-  default = 25
-  description= "[Optional] Autoscale - When both cpu and memory are below scale in thresholds decrease tasks by 1. Only applies when the total number of tasks exceed the minimum task count. number of running tasks determined by HealthyHostCount."
+  type        = number
+  default     = 25
+  description = "[Optional] Autoscale - When both cpu and memory are below scale in thresholds decrease tasks by 1. Only applies when the total number of tasks exceed the minimum task count. number of running tasks determined by HealthyHostCount."
 }
 
 variable "task_scale_in_cpu_threshold_percent" {
