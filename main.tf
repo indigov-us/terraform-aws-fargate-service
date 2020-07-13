@@ -105,7 +105,7 @@ resource "aws_ecs_service" "main" {
 
   network_configuration {
     security_groups = [aws_security_group.ecs_task.id]
-    subnets         = var.alb_subnets_private
+    subnets         = local.alb_subnets
   }
 
   load_balancer {
