@@ -97,12 +97,12 @@ resource "aws_route53_record" "www" {
 }
 
 resource "aws_ecs_service" "main" {
-  name              = "${var.resource_prefix}-${terraform.workspace}"
-  cluster           = var.ecs_cluster_id
-  task_definition   = var.ecs_task_definition_arn
-  desired_count     = var.task_count
-  launch_type       = "FARGATE"
-  platform_versioin = var.ecs_platform_version
+  name             = "${var.resource_prefix}-${terraform.workspace}"
+  cluster          = var.ecs_cluster_id
+  task_definition  = var.ecs_task_definition_arn
+  desired_count    = var.task_count
+  launch_type      = "FARGATE"
+  platform_version = var.ecs_platform_version
 
   network_configuration {
     security_groups = [aws_security_group.ecs_task.id]
