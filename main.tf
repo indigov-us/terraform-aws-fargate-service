@@ -130,6 +130,16 @@ resource "aws_security_group" "ecs_task" {
   }
 }
 
+resource "aws_vpc_endpoint" "task_ecr_dkr" {
+  vpc_id       = var.vpc_id
+  service_name = "com.amazonaws.${data.aws_region.current}.ecr.dkr"
+}
+
+resource "aws_vpc_endpoint" "task_ecr_api" {
+  vpc_id       = var.vpc_id
+  service_name = "com.amazonaws.${data.aws_region.current}.ecr.api"
+}
+
 resource "aws_security_group_rule" "ecs_task_ingress" {
   security_group_id        = aws_security_group.ecs_task.id
   type                     = "ingress"
