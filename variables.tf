@@ -29,6 +29,12 @@ variable "ecs_task_definition_arn" {
   description = "ARN of ECS task definition to use with service"
 }
 
+variable "ecs_platform_version" {
+  type        = string
+  description = "Fargate Platform version (some features may only be available on the newest version which confusingly is not always 'LATEST')"
+  default     = "LATEST"
+}
+
 variable "enable_monitoring" {
   type    = bool
   default = false
